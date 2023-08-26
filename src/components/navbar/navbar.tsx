@@ -1,8 +1,13 @@
 import Link from 'next/link'
-import { Container } from '@/components/ui/container'
-import { MainNav } from './main-nav'
 
-const Navbar = () => {
+import { MainNav } from './main-nav'
+import { Container } from '@/components/ui/container'
+import getCategories from '@/lib/actions/get-categories'
+import NavbarActions from './navbar-actions'
+
+const Navbar = async () => {
+  const categories = await getCategories()
+
   return (
     <div className='border-b'>
       <Container>
@@ -10,7 +15,8 @@ const Navbar = () => {
           <Link href='/' className='ml-4 flex lg:ml-0 gap-x-2'>
             <p className='font-bold'>Store</p>
           </Link>
-          <MainNav data={[]} />
+          <MainNav data={categories} />
+          <NavbarActions />
         </div>
       </Container>
     </div>
