@@ -1,6 +1,6 @@
 import Billboard from '@/components/ui/billboard'
 import getBillboard from '@/lib/actions/get-billboard'
-import { Container } from '@/components/ui/container'
+import Container from '@/components/ui/container'
 import ProductList from '@/components/product-list'
 
 import getProducts from '@/lib/actions/get-products'
