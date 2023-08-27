@@ -10,6 +10,7 @@ import IconButton from '@/components/ui/icon-button'
 
 import { Product } from '@/lib/types'
 import usePreviewModal from '@/hooks/use-preview-modal'
+import useCart from '@/hooks/use-cart'
 
 interface ProductCard {
   data: Product
@@ -18,6 +19,7 @@ interface ProductCard {
 const ProductCard: React.FC<ProductCard> = ({ data }) => {
   const previewModal = usePreviewModal()
   const router = useRouter()
+  const cart = useCart()
 
   const handleClick = () => {
     router.push(`/product/${data?.id}`)
@@ -30,6 +32,7 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
 
   const onAddToCart: MouseEventHandler<HTMLButtonElement> = event => {
     event.stopPropagation()
+    cart.addItem(data)
   }
 
   return (
