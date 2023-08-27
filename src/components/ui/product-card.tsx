@@ -9,12 +9,14 @@ import Currency from '@/components/ui/currency'
 import IconButton from '@/components/ui/icon-button'
 
 import { Product } from '@/lib/types'
+import usePreviewModal from '@/hooks/use-preview-modal'
 
 interface ProductCard {
   data: Product
 }
 
 const ProductCard: React.FC<ProductCard> = ({ data }) => {
+  const previewModal = usePreviewModal()
   const router = useRouter()
 
   const handleClick = () => {
@@ -23,6 +25,7 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
 
   const onPreview: MouseEventHandler<HTMLButtonElement> = event => {
     event.stopPropagation()
+    previewModal.onOpen(data)
   }
 
   const onAddToCart: MouseEventHandler<HTMLButtonElement> = event => {
